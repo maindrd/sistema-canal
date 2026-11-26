@@ -1,0 +1,679 @@
+{
+  "esquema": 1,
+  "versiones": [
+    {
+      "version": "0.10.0-beta",
+      "publicadaEl": "2026-08-26T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+        "web": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+        "pantallas": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "paraQuienUsa": [
+        "Se puede llamar por teléfono a un compañero desde su ficha, y transferirle una llamada en curso.",
+        "Las llamadas propias aparecen en «Mi desempeño»."
+      ],
+      "paraQuienAdministra": [
+        "El arranque del servidor ya no aplica los cambios de estructura: los aplica el botón de Ajustes › Sistema › Actualizaciones, sobre una copia de la base y con vuelta atrás.",
+        "La configuración de telefonía se administra desde Ajustes › Integraciones."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": false,
+      "rompeCompatibilidad": false
+    },
+    {
+      "version": "0.11.1-beta",
+      "publicadaEl": "2026-09-05T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:9163225d45136c6ca6902cc2710fc0fd0af71363445a8ae3d6c0063381d53fcf",
+        "web": "sha256:1767df558f0164d4d46ad03eea5c805c7b9bbf7ce051980a89218c9cee6fdfda",
+        "pantallas": "sha256:bf6d799cdeb6af55ec1a79db430a5c4141a3561eb06ed515ea2e8daa8c3bf156"
+      },
+      "paraQuienUsa": [
+        "Una lista vacia ya no significa siempre lo mismo: la pantalla distingue «no hay nada» de «no se pudo cargar» —y ahi ofrece reintentar— y de «no hay nada con estos filtros». Pasaba en los leads, los archivos, las tareas del dia y las citas.",
+        "Tras actualizar ya no hay que recargar a mano: una pestana abierta se pone al dia sola al primer clic, y los televisores de pared se recargan solos en cuanto el sistema vuelve a responder.",
+        "En Costos y ROI, cada campana tiene una sola cifra de costo por lead —antes salian varias y ninguna era correcta— y el lapiz y la papelera actuan sobre la fila que se pulsa, no siempre sobre la primera."
+      ],
+      "paraQuienAdministra": [
+        "El servidor borra solo las imagenes de las versiones viejas: conserva dos, respeta un piso de 48 horas y no borra nada si no pudo medir el disco. Ajustes › Sistema › Almacenamiento muestra cuales quedan.",
+        "En Drive dejan de ofrecerse las acciones que el permiso va a rechazar: renombrar, crear carpeta, subir, vaciar la papelera y restaurar.",
+        "Los rotulos del sistema recuperan sus tildes, tambien los que estaban guardados en la base de instalaciones ya en marcha."
+      ],
+      "accionesManuales": [
+        "La memoria compartida de la base sube a 256 MB, pero ese ajuste vive en el fichero de arranque del servidor y no viaja dentro de la actualizacion. Hay que anadir «shm_size: 256mb» al servicio postgres de docker-compose.cliente.yml y reiniciarlo. Sin eso, un informe grande puede seguir fallando con un error de memoria compartida.",
+        "La limpieza automatica de la cache de compilacion de Docker se anadio al instalador, que tampoco viaja. En un servidor ya instalado se recupera de una vez con «docker builder prune -f»: en el servidor de prueba eran 4 GB, suficientes para bloquear la siguiente actualizacion."
+      ],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false
+    },
+    {
+      "version": "0.11.2-beta",
+      "publicadaEl": "2026-09-06T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:e7164f6f5b184342258a5d9371ff2c841445452da9f43131d731249f1c01d70a",
+        "web": "sha256:3a5b34295b74c918de9323867a55371031cda26fb31eba338ca76bbcd19ff0a5",
+        "pantallas": "sha256:cc3f2ff9edcf2860b74b8f84098150d0a6d5650f178ce52747e39743335d6846"
+      },
+      "paraQuienUsa": [
+        "El código de verificación se escribe en seis casillas: se puede pegar entero —también copiado con un espacio en medio—, borrar hacia atrás y corregir por el medio, y al completar el sexto dígito se envía solo."
+      ],
+      "paraQuienAdministra": [
+        "El modo superadministrador ya no se apaga al renovarse la sesión: dura las cuatro horas de inactividad que anuncia la pantalla. Antes moría en cualquier recarga y había que volver a teclear el segundo factor durante una misma tarea."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false
+    },
+    {
+      "version": "0.12.0-beta",
+      "publicadaEl": "2026-09-08T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:145565d4d314e6d5de8a6f5df32d5a4984d85f69d751017381c30bc34edb22f9",
+        "web": "sha256:3cbb37da6425280b365c9f04a915132becf90898bfcb2c4cf97f57cf6404ea91",
+        "pantallas": "sha256:d8840a3b60d3e13326d9a074ea0c624fa3d9f414dede83a47aa664a8df83e7db",
+        "freeswitch": "sha256:05d7d670908e554412e4c4b8f143efd933c65beff533288cf5a8457f0ee8bed1"
+      },
+      "paraQuienUsa": [],
+      "paraQuienAdministra": [
+        "Antes de aplicar una actualización se comprueba que la copia que se acaba de tomar se puede abrir de verdad, y se abre la imagen de la versión nueva para comparar los cambios de estructura que la base ya tiene contra los que esa versión conoce. Si no los conoce todos, se detiene antes de tocar nada.",
+        "El asistente de puesta en marcha entrega la clave de rescate al cliente: la genera su navegador, se muestra una sola vez y hay que volver a escribirla para seguir. Con ella el servidor crea un kit cifrado con los secretos que no se regeneran, los certificados y la configuración del proxy, y desde esta versión la API no arranca en producción sin él. El kit se vuelve a descargar desde Ajustes › Sistema › Copias de seguridad; la clave no la puede volver a decir nadie.",
+        "Al cambiar el nombre del servidor, los nombres anteriores se quedan en el certificado con fecha de retirada —un día, y «--gracia» la mueve— y el servidor los retira solo al cumplirse. El cambio es inmediato: ese día es para recorrer los televisores, que llevan la dirección tecleada en el aparato. Antes solo se conservaba el último, así que un segundo cambio dejaba mudas las pantallas colgadas con el primero."
+      ],
+      "accionesManuales": [
+        "Desde esta versión la API no arranca en producción sin el kit de rescate, y una instalación anterior no lo tiene. La actualización se encarga: al arrancar, esta versión abre por sí sola una ventana de puesta en marcha para poder levantar sin kit, y mientras dure solo funcionan el acceso y el asistente. Entra con la cuenta de superadministración y el asistente se abre directamente en el paso de la clave de rescate: la genera tu navegador, se muestra una sola vez y hay que volver a escribirla. En cuanto el kit existe, la ventana se cierra y el sistema vuelve a estar disponible entero. No se reabren los pasos de empresa, mesa ni módulos: tu configuración no se toca."
+      ],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false
+    },
+    {
+      "version": "0.12.1-beta",
+      "publicadaEl": "2026-09-10T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:d2e7d56e5e7468fffb1c18a574b25c5bbeb37b219d6743a2f67db6c93f9c3429",
+        "web": "sha256:71dc33889a9a7044d91fbc799520cdcc0d3929e2e04d723053c56222bfb4292d",
+        "pantallas": "sha256:1d0478a3cb2b010c4e9abc05659fc3b1208cea45e396a72bc33cddaa137107e3",
+        "freeswitch": "sha256:577dbcbeda28c2edae4d7bdbefe509692bc537abac5efae4ab5ff205eb5cf202"
+      },
+      "paraQuienUsa": [
+        "Los correos y teléfonos ocultos dejan de delatar su longitud. Antes, una dirección tapada se veía como «jua*****************************.com» y el número de asteriscos decía lo larga que era de verdad; ahora todas se tapan igual, con la misma marca, independientemente de lo que escondan.",
+        "La campaña del lead se ve en su ficha, y no solo en las listas. A quien tenía el permiso concedido, la ficha le mostraba el dato vacío: el permiso encendía la columna del pipeline y la ficha decidía por su cuenta, sin mirarlo.",
+        "Al importar clientes, descartar las filas con errores cuenta como terminar. El asistente deja salir, dice cuántos leads quedaron guardados y ya no avisa de que se pierde algo que en realidad está dentro. Y salir del corrector para mirar el resumen deja de borrar lo que se llevaba decidido."
+      ],
+      "paraQuienAdministra": [
+        "La pantalla de actualizaciones se rehízo entera. Aprovecha el ancho de la ventana, y en cada momento —comprobando, descargando, aplicando— dice qué está pasando, cuánto lleva y qué se puede hacer. Las notas de cada versión muestran la anterior y la actual, con lo técnico recogido aparte en vez de mezclado.",
+        "El catálogo de campañas dejó de responder a cualquiera con la sesión abierta: ahora pide el mismo permiso que la columna que lo muestra. Antes se podía consultar entero por la vía directa aunque la pantalla lo tuviera oculto."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false
+    },
+    {
+      "version": "0.12.2-beta",
+      "publicadaEl": "2026-09-11T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:94b96021feb208c271ea29dc96009318ab4bfbba1afad8b02b84f63445345e9c",
+        "web": "sha256:160428fe9256c0ffecffe7f4b17eb0a1a8f54f8a8fb9c8b3f3ddbe9556ce94fd",
+        "pantallas": "sha256:0edb53bef461b44e2ababfd021f16d99df15f401b475e06695b7485a475f642f",
+        "freeswitch": "sha256:94bc081e85d2d861a200b82991076cb275ebb8cc4549e2642d71bcc954e09153"
+      },
+      "paraQuienUsa": [
+        "Asesores y team leaders vuelven a entrar al CRM. Desde la versión anterior, al abrir el pipeline el sistema les decía que no tenían permiso y los devolvía al inicio; ahora entran con normalidad, y lo que cada uno ve de la campaña no cambia.",
+        "Durante una actualización, quien está trabajando ya no es expulsado: ve que el sistema está en mantenimiento y, al terminar, sigue dentro sin volver a iniciar sesión. Se nota desde la actualización siguiente a esta, porque durante esta los navegadores todavía tienen cargadas las pantallas anteriores."
+      ],
+      "paraQuienAdministra": [
+        "Una actualización termina sola. La versión nueva espera a que el servidor acabe de cambiar y comprobar las imágenes antes de darse por terminada; antes lo decidía unos segundos antes de tiempo y dejaba el sistema en mantenimiento hasta reiniciar la API a mano.",
+        "Si una actualización cambia la estructura de la base, quien renueve su sesión mientras se aplica tendrá que iniciarla otra vez al terminar: esa renovación queda en la copia anterior de la base y no pasa a la nueva."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": false,
+      "rompeCompatibilidad": false
+    },
+    {
+      "version": "0.12.3-beta",
+      "publicadaEl": "2026-09-14T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:5bfa6deefd30c4ee598ce01189c8004a77e823f0e206211c244f67070903f6a2",
+        "web": "sha256:1c9a1ecd5f0e5269a8d795550a226ff542a38b812e236c35f9f71fa1db6c62d3",
+        "pantallas": "sha256:4ce68263a1fed50b86a1aca39d04cc0c01e6b67e92b616bf7b5fca4f193139b7",
+        "freeswitch": "sha256:8865c826ab4c2502962403289d03ddcd02c0477533f118b3d37d704026319990"
+      },
+      "paraQuienUsa": [
+        "En el Pipeline, quien ve más que sus propios clientes puede filtrar por asesor, mesa y gestor, y el tablero carga cada columna por separado. En todas las listas de clientes, los filtros, los marcados y los botones de anterior y siguiente se conservan al abrir un cliente y volver, y la flecha de la ficha lleva a la pantalla desde la que se abrió. Abrir un cliente desde Mi desempeño, el buscador o la agenda ya no rechaza a asesores y team leaders, y al agrupar por fecha los días, semanas y meses siguen la zona horaria del sistema.",
+        "En Ventas se puede filtrar por ID del cliente y por cliente, y agrupar por asesor, equipo, campaña, estado, cliente, día, semana o mes. Los importes se ven con dos decimales, buscar un teléfono ya no da error, y en el CRM quien no tiene permiso para ver asignaciones ajenas deja de ver quién es el asesor de cada venta y de los clientes que no lleva. La gráfica «Ocupación por etapa» pasa a barras con su número.",
+        "Deshacer una importación enseña antes cuántos clientes se quitan, cuántos ya están trabajados y cuántos tienen venta, y deja conservar los trabajados; los que tienen venta no se quitan nunca. Si un archivo trae clientes que se eliminaron a propósito, el asistente avisa de cuántos son. Durante un mantenimiento, quien abre la pantalla de acceso con la sesión abierta ve el aviso y entra solo unos segundos después de terminar, y «Cerrar sesión» cierra de verdad; se nota desde la actualización siguiente a esta."
+      ],
+      "paraQuienAdministra": [
+        "Apagar la telefonía queda hecho con un solo clic. Desde la próxima actualización, el botón de actualizar aparece cuando la versión nueva ya está descargada entera —mientras, la pantalla dice «Descargando actualización»—, la fecha de publicación se lee como una fecha normal y, si la actualización no cambia la estructura de la base, se puede volver a la versión anterior desde el panel.",
+        "En el CRM, lo que cada rol ve de la campaña, la fuente y el país lo decide solo Visibilidad de campos, y conviene revisarla al actualizar: quien no tenía permiso para ver la campaña y la fuente pasa a verlas si allí no tiene una regla que se las oculte. Una importación deshecha se puede restaurar según el rol —Gestor el mismo día, Supervisor durante tres días, Administrador y Superadministrador durante treinta—, así que el Supervisor ya no puede restaurar una deshecha hace más de tres días; a los 30 días sus clientes se borran del todo, también los de importaciones deshechas antes de esta versión. Si después se vuelve a 0.12.2, allí deshacer una importación retira a todos sus clientes, también a los trabajados y a los que tienen venta.",
+        "El certificado cubre también www cuando ese nombre apunta al servidor: entra solo, unas 24 horas después de actualizar, y quien entra por www llega a la dirección principal. Deja de avisarse de una caducidad del certificado que no existía."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false
+    },
+    {
+      "version": "0.12.4-beta",
+      "publicadaEl": "2026-09-14T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:3dcccdb1d83b5d1def82cd765ae1079424b3698cf13fe3d42e76779108b6b673",
+        "web": "sha256:0c4c2f18e65ac5d2edce719a3c97ff906c5b36c57d421c11b385fdebaec6fd0b",
+        "pantallas": "sha256:6b831f6b3948d32ebaa3664f3ff3e05630d701229db5238f9357e945a38e1537",
+        "freeswitch": "sha256:c0360033c0606b2467c166e01fa3f2c7275548bbc38346c016328303ed027702"
+      },
+      "paraQuienUsa": [
+        "Los team leaders abren con normalidad la ficha de los clientes que lleva alguien de su mesa: antes, al entrar desde Mi mesa, el sistema decía «Este lead ya no está disponible» y los devolvía a la lista. Los clientes de otras mesas siguen sin estar a su alcance.",
+        "Al volver de la ficha de un cliente, los grupos que estaban abiertos en la lista siguen abiertos, con sus clientes a la vista. Si se cambian los filtros, la lista vuelve a salir plegada."
+      ],
+      "paraQuienAdministra": [
+        "La pantalla de actualizaciones se recarga sola cuando la actualización termina, en vez de quedarse con la versión anterior hasta recargarla a mano; se nota desde la actualización siguiente a esta. Esta versión no cambia la estructura de la base, así que se puede volver a 0.12.3 desde el panel."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": false,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": true
+    },
+    {
+      "version": "0.12.5-beta",
+      "publicadaEl": "2026-09-15T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:a0b53d4d85e3ab6bfee6c0e40ab9ab4fa8d525adee937f78645c38f40321b0a0",
+        "web": "sha256:f28d1618e4ca64e22d798a21ecc45889f89969495e610aaac9a85e2c55c00ce6",
+        "pantallas": "sha256:d6cebaef02475bacaf1bbcf69d4e70e9306607c9c48091c2c8ef365b8802c61d",
+        "freeswitch": "sha256:6d89daecc03e35b190e9467a969f398c4463b8ec7497b0ff7716912c334b8a57"
+      },
+      "paraQuienUsa": [
+        "Las listas del CRM (Pipeline, Activos, Base, Perdidos, Archivados, Banco y Ventas) filtran y agrupan igual: los filtros se suman, «Seleccionar todos» marca todas las opciones, se puede agrupar por mesa, el tablero se agrupa en filas y cada lista recuerda tu última vista al volver a entrar desde el menú. Las tarjetas muestran los días sin actividad y esa columna se puede ordenar.",
+        "El sistema se actualiza solo: campañas, etapas, mesas, ajustes, módulos, citas, clientes y archivos de Drive que cambia otra persona aparecen sin recargar, sin parpadeos, y al volver al equipo tras un rato se pone al día una sola vez. El modo superadministrador se apaga solo al caducar.",
+        "En Ventas se elige el asesor al registrar y Administración puede corregirlo con motivo dentro del límite configurado; el detalle se abre en un panel con anterior y siguiente dentro de la lista filtrada y muestra el ID del cliente y el motivo. En el chat, quien lee un canal sin ser miembro ve las imágenes y archivos, sabe que nadie lo ve y puede unirse si tiene permiso; las notas de voz se distinguen de los audios, los documentos se ven sin descargarlos y se puede reenviar un archivo suelto. Cambiar el rol de alguien ya no le cierra la sesión y los nombres salen antes que el usuario."
+      ],
+      "paraQuienAdministra": [
+        "Esta versión cambia la estructura de la base (cuentas de nivel 0 asignables, corrección de asesor de ventas y textos de permisos): volver a 0.12.4 desde el panel restaura también la copia de la base.",
+        "El superadministrador trabaja como un Administrador visible y asignable; sus opciones propias siguen detrás del segundo factor. El nuevo permiso «Corregir el asesor de una venta» nace solo para Administración y su límite se ajusta en la configuración de Ventas del CRM.",
+        "El servidor borra solo las bases de datos sueltas 7 días después de detectarlas y lo deja en la auditoría, registra las copias purgadas, avisa en Diagnóstico si el servidor necesita reiniciarse, muestra cuándo se descargó la última copia y no se deja indexar por buscadores ni por asistentes de IA."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": false,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": false
+    },
+    {
+      "version": "0.12.6-beta",
+      "publicadaEl": "2026-09-22T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:eaef51c9ab1012e2f226eb4dd7683ac7a015c91195894e21b4f0b36a2ec02247",
+        "web": "sha256:996fce90d74f13aa9bea35518377db54ec4f4269ca48f41c3cab4a641092bdca",
+        "pantallas": "sha256:19efd815db4b541b870b91cd7334ac371f1bc631437c1bcdbc1e88dbe5323f9b",
+        "freeswitch": "sha256:e288e8d8b7c07f7048dd389f4b413c905f4deddfac9760b8595d17468e0d3f22"
+      },
+      "paraQuienUsa": [
+        "Agrupar vuelve a funcionar como antes en las ocho listas de clientes y en Ventas: sin filtros no hay boton, aparece al elegir dos o mas valores en un filtro, y los grupos salen cerrados y con 25 por pagina. Al entrar a un cliente y volver se conservan los grupos abiertos, la pagina de cada grupo, lo que llevas marcado y la altura de la lista. Cada grupo muestra su valor y su conteo, sin repetir el nombre del filtro.",
+        "Los filtros duran la jornada: recargar la pagina los conserva, pulsar en el menu la lista en la que ya estas tambien, «Limpiar filtros» los vacia sin tocar el alcance del Pipeline, y al dia siguiente la lista abre limpia. Un enlace pegado manda sobre lo guardado. El Banco se abre y se queda, y la flecha de volver desde un cliente del Banco regresa al Banco.",
+        "Un cliente perdido se reactiva al reasignarlo, con su historial, y se puede archivar; una accion en lote deja el cliente donde dice el boton y el aviso nombra en amarillo lo que quedo fuera. Ningun cliente se da por perdido sin asesor. En Ventas el detalle se abre en una ventana sobre la lista. En el chat, un arroba dentro de una contrasena o de un correo ya no se pinta como mencion. Una renovacion lenta de la sesion ya no saca a nadie al acceso."
+      ],
+      "paraQuienAdministra": [
+        "Esta version cambia la estructura de la base (una aprobacion de banco por estancia y el margen de reuso del refresco): volver a 0.12.5 desde el panel restaura tambien la copia de la base.",
+        "Ante el reuso de una credencial ya renovada se cierra la sesion que seguia abierta y Ajustes › Sesiones lo dice con su hora y su equipo, junto al motivo de cierre de cada sesion. El margen de tolerancia para una red lenta son 60 segundos y se ajusta con REFRESH_MARGEN_REUSO_SEG, entre 0 y 60.",
+        "Las solicitudes del banco se cierran solas con su motivo cuando el cliente sale por otra via y vuelven a aprobarse si el cliente entra otra vez al banco. Las etiquetas de cliente solo llegan a quien puede ver ese cliente."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": false
+    },
+    {
+      "version": "0.12.7-beta",
+      "publicadaEl": "2026-10-05T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:1764d5c23908579524920f55d2cd648f86b4229b178c1650ed13c7d7ba4a37cd",
+        "web": "sha256:fa8d4ec50c191b1516e589b2cb3fc65acb418203ee9a7402b2a063e64105b02b",
+        "pantallas": "sha256:b3e75237aeba3cd258f4ba48a3c585b97b9042e2033ea24734120309df5c821b",
+        "freeswitch": "sha256:582f9bc5f5baf6c7fd7492a0db58763d4280c8b71ab817f4af2e69d0a563e2c1"
+      },
+      "paraQuienUsa": [
+        "En el chat, las fotos de un mismo envio se ven en mosaico y en el orden en que se eligieron, y cada foto o archivo tiene su propio menu: seleccionarlo solo o con el resto, reenviarlo, descargarlo, guardarlo en Drive, responder a esa foto o eliminarla del mensaje sin tocar las demas. El visor recorre todas las fotos cargadas de la conversacion. Un mensaje admite hasta 10 000 caracteres, con contador, y hasta 50 archivos y 500 MB por envio: si se eligen de mas, el aviso lo dice antes de subir. La descripcion larga de un canal se despliega al pulsarla y el buscador de personas responde desde dos letras.",
+        "En el CRM la ficha muestra entre sus flechas en que puesto de la lista estas («5 / 20»), y quien puede ver los cambios ve por que y cuantas veces salio el cliente. Quien puede avanzar o regresar etapas lo decide el administrador en Ajustes › Seguridad › Visibilidad y etapas, la barra de la ficha lo respeta y Activos ya no cambia etapas en lote. Reasignar ofrece «Empieza limpio: solo lo que pase desde ahora», para que el nuevo asesor no vea los comentarios anteriores. La actividad se cuenta por dias (hoy, ayer, 2 dias, 3 o mas) con sus colores, cada lista recuerda sus columnas y ordena al pulsar la cabecera, aplicar un filtro vuelve a la pagina 1, adjuntar muchos archivos a un comentario sube por tandas y avisa de cuantos entraron, y el aviso de un cliente que ya no llevas se ve apagado.",
+        "Al cerrarse la sesion aparece un recuadro donde estabas, con el motivo, «Volver a entrar» e «Iniciar sesion con otra cuenta», sin perder lo que estabas escribiendo, y dormir el equipo ya no la cierra; Ajustes › Sesiones dice cuando expira cada una. El numero de avisos sin leer sale en el titulo de la pestana y, donde el equipo lo permite, en el icono de la aplicacion instalada. Las fotos se ven desenfocadas mientras cargan, y Drive pide las miniaturas solo al verlas, ordena tambien en cuadricula y «Renombrar» ya no cambia la extension ni se cierra solo. La pared de television se pone al dia sola al cambiar de dia y de mes, ensena los puestos del podio que caben y vuelve a sonar; en Ajustes › Sistema › Pantallas cada pantalla ensena su direccion con «Copiar». La pantalla de mantenimiento queda en un aviso corto."
+      ],
+      "paraQuienAdministra": [
+        "Esta version cambia la estructura de la base (respuesta a una foto, orden de los adjuntos, motivo de cada salida del cliente, marcador de las miniaturas y ajustes nuevos): volver a 0.12.6 desde el panel restaura tambien la copia de la base. Se retira el ajuste de 60 minutos sin uso, que nunca cerro ninguna sesion: un equipo que se queda solo se protege bloqueando la pantalla (Windows+L). Las imagenes ya subidas reciben su miniatura en segundo plano, por tandas.",
+        "Ajustes nuevos en la configuracion del chat: hasta 500 MB por mensaje (techo 2000) y 50 archivos por mensaje, que la actualizacion aplica solo si seguia el 5 de fabrica; y en la del CRM, los colores de la actividad por dias o por semanas y si las flechas de la ficha vuelven al principio. El administrador ve «Mover etapas» en Visibilidad y etapas. El superadministrador gestiona los miembros de cualquier canal desde la configuracion del chat, puede anadirse y leerlo sin entrar, y esa lectura queda en la auditoria. «Permitir ejecutables» (.exe, .msi, .iso y similares) ahora funciona tambien al enviar en el chat; sigue apagado de fabrica porque su contenido no se sanea.",
+        "Correcciones de seguridad: borrar un mensaje o cerrar una encuesta exige poder ver el canal, y quitar un asesor o cambiar el estado de un cliente se hace bajo candado para que dos personas no se pisen. Con la sesion vencida, el modo mantenimiento y la licencia responden 401 y el navegador renueva la sesion en vez de quedarse atascado. La configuracion del proxy viaja con la actualizacion: admite copias de seguridad de hasta 20 GB y sirve los sonidos de la pared. En el televisor de la pared, apaga el ahorro de energia y el apagado automatico; si tras un reinicio deja de sonar, pulsa OK una vez con la pared en pantalla."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": false
+    },
+    {
+      "version": "0.12.8-beta",
+      "publicadaEl": "2026-10-06T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:e8c7ddc6697f219a7404dc0c09210f802da0ac6af967fd583e5294fd6f6373bb",
+        "web": "sha256:bd76632ecadee1e7ac7ae4e49d81e2870e3c46ff69901dd07563d75c4ee54c54",
+        "pantallas": "sha256:361c20d5f2bc89929f25d4c3f6ab0a9b5509a6b6d954f896f5429808b6fd5936",
+        "freeswitch": "sha256:bb198f661472580f414e07f010b706a6fc0343fcab4ef10796eae856ebcb2774"
+      },
+      "paraQuienUsa": [
+        "En el chat, las fotos de un mismo envio se ven en mosaico y en el orden en que se eligieron, y cada foto o archivo tiene su propio menu: seleccionarlo solo o con el resto, reenviarlo, descargarlo, guardarlo en Drive, responder a esa foto o eliminarla del mensaje sin tocar las demas. El visor recorre todas las fotos cargadas de la conversacion. Un mensaje admite hasta 10 000 caracteres, con contador, y hasta 50 archivos y 500 MB por envio: si se eligen de mas, el aviso lo dice antes de subir. La descripcion larga de un canal se despliega al pulsarla y el buscador de personas responde desde dos letras. Las fotos se ven desenfocadas mientras cargan, Drive pide las miniaturas solo al verlas, ordena tambien en cuadricula y «Renombrar» ya no cambia la extension ni se cierra solo, y el tamano de un archivo se muestra igual en todas las pantallas.",
+        "En el CRM la ficha muestra entre sus flechas en que puesto de la lista estas («5 / 20»), y quien puede ver los cambios ve por que y cuantas veces salio el cliente. Quien puede avanzar o regresar etapas lo decide el administrador en Ajustes › Seguridad › Visibilidad y etapas, la barra de la ficha lo respeta y Activos ya no cambia etapas en lote. Reasignar ofrece «Empieza limpio: solo lo que pase desde ahora», para que el nuevo asesor no vea los comentarios anteriores. La actividad se cuenta por dias (hoy, ayer, 2 dias, 3 o mas) con sus colores, cada lista recuerda sus columnas y ordena al pulsar la cabecera, aplicar un filtro vuelve a la pagina 1, adjuntar muchos archivos a un comentario sube por tandas y avisa de cuantos entraron, y el aviso de un cliente que ya no llevas se ve apagado. Al marcar un cliente como perdido, en la ficha o en lote, se ve solo la nota y la razon. Puedes pegar una captura con Ctrl+V en los comentarios de la ficha, con el foco en cualquier parte de ella, en los formularios rapidos y en los comprobantes al registrar o editar una venta. Si el tablero del Pipeline no puede cargar las etapas lo dice y ofrece Reintentar, y Ventas ya no se queda con un equipo o una campana que se borraron: el filtro se quita solo y avisa.",
+        "Al cerrarse la sesion aparece un recuadro donde estabas, con el motivo, «Volver a entrar» e «Iniciar sesion con otra cuenta», sin perder lo que estabas escribiendo, y dormir el equipo ya no la cierra; Ajustes › Sesiones dice cuando expira cada una. El numero de avisos sin leer sale en el titulo de la pestana y, donde el equipo lo permite, en el icono de la aplicacion instalada. Al archivar un usuario, si el boton no se puede pulsar, se ve escrito debajo que falta, tambien en tableta. La pared de television se pone al dia sola al cambiar de dia y de mes, ensena los puestos del podio que caben, vuelve a sonar y hace mas para no apagarse, tambien en televisores antiguos; en Ajustes › Sistema › Pantallas cada pantalla ensena su direccion con «Copiar». La pantalla de mantenimiento queda en un aviso corto."
+      ],
+      "paraQuienAdministra": [
+        "Quien venga de 0.12.6 recibe los cambios de estructura de la base de 0.12.7 (respuesta a una foto, orden de los adjuntos, motivo de cada salida del cliente, marcador de las miniaturas y ajustes nuevos): volver a 0.12.6 desde el panel restaura tambien la copia de la base. Se retira el ajuste de 60 minutos sin uso, que nunca cerro ninguna sesion: un equipo que se queda solo se protege bloqueando la pantalla (Windows+L). Las imagenes ya subidas reciben su miniatura en segundo plano, por tandas. Cuando el servidor necesita reiniciarse, el aviso sale tambien en la portada de Ajustes, no solo en Diagnostico.",
+        "Ajustes nuevos en la configuracion del chat: hasta 500 MB por mensaje (techo 2000) y 50 archivos por mensaje, que la actualizacion aplica solo si seguia el 5 de fabrica; y en la del CRM, los colores de la actividad por dias o por semanas y si las flechas de la ficha vuelven al principio. El administrador ve «Mover etapas» en Visibilidad y etapas. El superadministrador gestiona los miembros de cualquier canal desde la configuracion del chat, puede anadirse y leerlo sin entrar, y esa lectura queda en la auditoria. «Permitir ejecutables» (.exe, .msi, .iso y similares) ahora funciona tambien al enviar en el chat; sigue apagado de fabrica porque su contenido no se sanea.",
+        "Correcciones de seguridad: borrar un mensaje o cerrar una encuesta exige poder ver el canal, y quitar un asesor o cambiar el estado de un cliente se hace bajo candado para que dos personas no se pisen. Con la sesion vencida, el modo mantenimiento y la licencia responden 401 y el navegador renueva la sesion en vez de quedarse atascado. La configuracion del proxy viaja con la actualizacion: admite copias de seguridad de hasta 20 GB y sirve los sonidos de la pared. En el televisor de la pared, apaga el ahorro de energia y el apagado automatico; si tras un reinicio deja de sonar, pulsa OK una vez con la pared en pantalla."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": false
+    },
+    {
+      "version": "0.12.9-beta",
+      "publicadaEl": "2026-10-06T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:8c989463b5398ddb521e4288acdd3c909f3fb3d6a20ac44de65daa9425e2e708",
+        "web": "sha256:00440300cc3a2f4671c5cbf1650c6d8b0af3c733c95f70aa09ede31fe32d435c",
+        "pantallas": "sha256:41f7de0976383088280b6d0c715ff624734c3900af705d5d5708d779afcc24dd",
+        "freeswitch": "sha256:74bbf5935b4393a82b6e586fbbc944a3bdab5bfeb3cdc9eb49c5efe0af817aa0"
+      },
+      "paraQuienUsa": [
+        "En el chat, las fotos antiguas vuelven a verse como foto mientras se rehacen sus miniaturas, ahora mas nitidas, y las imagenes pequenas se muestran con su original. Al seleccionar un mensaje ya no aparece una segunda marca sobre su adjunto salvo que se elijan solo algunos. Con muchos adjuntos, la bandeja del chat y la del comentario del CRM ocupan como mucho dos filas, se desplazan por dentro, dicen cuantos archivos hay y cuanto pesan, y permiten quitarlos todos. El visor de archivos es uno solo en Drive, chat y CRM: en movil las acciones pasan al menu y la tecla D descarga en todos. Pulsar la burbuja de una conversacion abre esa conversacion a la primera, y la barra izquierda del chat se pliega, se recuerda y se pliega sola en pantallas estrechas. Los GIF y WebP animados llevan la marca «GIF» y se mueven al pasar el raton, al tocarlos o en el visor; los stickers animados conservan la animacion y se reproducen como se elija en Preferencias: siempre, al pasar el raton o nunca.",
+        "En el CRM, Perdidos ya no repite la columna Motivo y gana un ojo con el historial de salidas del cliente, tambien en Reportes; si el administrador lo activa, marcar un cliente como perdido exige escribir una nota. Archivar un cliente lo suelta de su asesor, como la Base y el Banco: en Archivados, Base y Banco la columna y el filtro «Ultimo asesor» dicen quien lo llevo, o «Nunca asignado», y el aviso de un cliente archivado ya no abre la ficha. «Devolver a su asesor» y «Cambiar asesor» ofrecen tambien a quien lo llevaba, y el cliente queda activo, nunca en Perdidos. Las busquedas ya no distinguen tildes ni mayusculas: buscar jose encuentra tambien los nombres escritos con tilde o en mayusculas, en clientes, ventas, Banco, citas, tareas, usuarios, catalogos y Drive.",
+        "La campana separa los avisos en Todas, Chat y Sistema, y «Marcar todas» actua sobre la pestana abierta, incluidos los mensajes del chat. Quien lo active en Preferencias › Notificaciones recibe tambien los avisos como notificacion del navegador. La solicitud de un cliente del Banco avisa a quien puede aprobarla desde su bandeja. Tras una actualizacion las pestanas abiertas se recargan solas, esperando a que acabe una subida y conservando el mensaje del chat a medio escribir; si una pantalla falla al cargar se ve un aviso en espanol con Recargar, y el contador de avisos del titulo ya no sale repetido. Se retira el hueco que el chat flotante reservaba al pie de cada pantalla, Reportes deja de mostrar una banda vacia al desplazarse y en pantallas estrechas la busqueda de la barra superior queda en un icono. La pared de television hace mas para no apagarse: un video negro de respaldo a pantalla completa acompana al bloqueo del reposo."
+      ],
+      "paraQuienAdministra": [
+        "Esta version cambia la estructura de la base (nota obligatoria al marcar perdido, version de las miniaturas, permiso y ajuste del reinicio del servidor, clientes archivados sin asesor e imagenes animadas): volver a 0.12.8 desde el panel restaura tambien la copia de la base. Al actualizar, los clientes archivados se desligan de su asesor con la fecha de su archivo y ese asesor deja de verlos; si esta suspendido o archivado, devolverle un cliente lo deja en la Base con aviso. Las miniaturas de fotos y PDF se rehacen mas nitidas en segundo plano, por tandas. Los reportes por asesor cuentan por quien llevaba al cliente en la fecha de cada hecho: soltar, reasignar o archivar ya no cambia las cifras de meses pasados, y el embudo de Mi desempeno y el Scorecard solo muestran clientes abiertos.",
+        "El servidor se reinicia solo desde las 03:30, en la zona del sistema, cuando su sistema operativo lo pide, y la actualizacion lo reinicia ella misma si queda pendiente, antes de abrir a los usuarios; la hora se cambia o se desactiva en Ajustes › Sistema › Actualizaciones. En esa tarjeta, cuando el servidor lo pide, el superadministrador tiene «Reiniciar servidor», que vuelve a confirmar su identidad y queda en la auditoria: nadie tiene que entrar por SSH. Durante el reinicio los usuarios ven el mantenimiento habitual, sin aviso previo. Al arrancar con la estructura de la base al dia, el sistema se abre en el acto si estaba cerrado solo por eso, sin esperar hasta cinco minutos.",
+        "Correcciones de seguridad: reiniciar el servidor es un permiso propio, solo del superadministrador de fabrica, y exige elevacion y volver a confirmar la identidad. Las busquedas tratan % y _ como texto y no como comodines. La solicitud del Banco avisa por el permiso de aprobarla y el alcance de la bandeja, y ya no solo a la gestora de la mesa: una mesa sin gestora deja de quedarse sin aviso. Los fallos de pantalla del navegador quedan apuntados en el registro de errores (modulo web), para corregirlos sin pedir capturas."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": false
+    },
+    {
+      "version": "0.12.10-beta",
+      "publicadaEl": "2026-10-15T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:46b41085460446e918e5f3318003c0ba2c92748cd44702ef7e39416067d549f5",
+        "web": "sha256:c155ca76bdd4442342623b7ea34ff9368bde40385bf3a38edce0b92b70b228fc",
+        "pantallas": "sha256:1e094401cbf9fa6f7003eb9c0178127f009001df485a3e7e3b7e787f8d526230",
+        "freeswitch": "sha256:74a9988ebcb4a3dfeea31e169c73a4dde06a891516c013f61df350a299851d3c"
+      },
+      "paraQuienUsa": [
+        "Las listas del CRM, Notificaciones, Seguimiento y Auditoria llevan el control de pagina en la cabecera: al bajar se asienta al pie como «3/13», con flechas, y al pulsarlo se elige pagina o cuantas ver por pagina; ya no lo tapa la burbuja del chat. En Archivados se ordena por «Veces que salio» y «Archivado el», y el ojo de las acciones abre el historial de salidas; en la ficha, la pestana Cambios muestra la razon y la nota de cada perdida.",
+        "En el chat, saltar a un mensaje fijado llega a la primera, en orden y sin duplicados, y el aviso de fijados ya no repite el ultimo. Al abrir una conversacion ya no aparece un candado mientras carga. Si una ventana del chat falla, solo esa ventana avisa y ofrece Reintentar o Recargar; la ficha sigue viva y el mensaje a medio escribir se conserva. Si una pantalla entera falla, el menu sigue a mano. Las graficas de Reportes ya no se salen de su tarjeta.",
+        "Si el codigo de verificacion en dos pasos se teclea pasados los cinco minutos, la pantalla dice que el paso caduco y vuelve sola al inicio, en vez de rechazar codigos buenos."
+      ],
+      "paraQuienAdministra": [
+        "Durante una actualizacion, una restauracion o una vuelta atras nadie escribe, tampoco los administradores, y las tareas programadas, la telefonia y el procesado de video se pausan: nada se pierde en la base que se abandona. Al terminar, el sistema se abre solo. Si una actualizacion se atasca, solo el superadministrador puede entrar y pulsar «Volver a la version anterior» o «Reintentar», y queda en la auditoria. Tras restaurar una copia, Copias ofrece «Volver a como estaba».",
+        "El bloqueo por intentos fallidos pasa a «Nunca» de fabrica: tras cinco fallos la cuenta espera 15 minutos y vuelve sola; quien ya estuviera bloqueado sigue asi y la tabla de Usuarios lo muestra con una insignia y un filtro. «Dejar como recien instalado» borra de verdad las copias restauradas, las subidas apartadas y la actualizacion programada, y deja la lista en la auditoria. La clave de pantallas se renueva sola en la siguiente actualizacion.",
+        "Correcciones de seguridad: el acceso responde igual a un usuario inexistente que a una contrasena mala, el contador de intentos ya no se puede eludir con peticiones simultaneas ni con un acceso correcto, la nota de una perdida no viaja a quien no puede ver la razon, y las acciones que el servidor iba a rechazar dejan de ofrecerse (anclar en Drive, scorecard de otro asesor, cerrar sesiones ajenas, asignar administrador de canal)."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": false
+    },
+    {
+      "version": "0.12.11-beta",
+      "publicadaEl": "2026-10-17T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:03eff209d574d052f0fe5a74d0071da2ead16cf24190ae7c2d3198cf17648be3",
+        "web": "sha256:330db92d9da5af24a877fed71f235b2cc81539a1c2c7d76d38cd4516d70ed490",
+        "pantallas": "sha256:f0a200518f747974e0dd8e5298b791900a8a122d1c3056cd33da7eaa69db317b",
+        "freeswitch": "sha256:09822d1f8a04e0354396180aecb2eb4caa477a36bb1fe4eab9103f080f6ccead"
+      },
+      "paraQuienUsa": [
+        "El telefono funciona con varias pestanas abiertas: suena una sola vez, las demas muestran la llamada y se puede abrir el telefono en una ventana propia. Quien pasa una llamada a un companero la sigue anotando y, si el companero no contesta o la rechaza, la llamada vuelve a quien la paso; quien la recibe pasada tambien la anota, con su propia tipificacion y su comentario en la ficha. Mis llamadas cuenta las llamadas por resultado, incluidas las que quedaron sin anotar, y la ficha del lead muestra sus llamadas solo a quien tiene permiso. Si no se tiene permiso de telefonia, la pantalla simplemente no aparece.",
+        "En el chat, las fotos se reducen antes de subir y se envian mucho mas rapido; los GIF, los WebP y los stickers animados se mueven mientras se ven y se paran tras unas vueltas (la marca «GIF» se ve mientras estan quietos), y un sticker nuevo puede crearse desde un WebP o un WebM animado. Antes de enviar una foto se puede rotarla, voltearla, recortarla, pintar sobre ella, escribir un texto, poner un emoji o tapar una parte, y se puede reaccionar a una foto concreta desde el album o desde el visor, donde «Reaccionar» queda siempre a la vista. El visor muestra al pie quien envio el archivo, cuando y el texto del mensaje, con «Ver mas» si es largo; el detalle se lee en palabras («Foto JPG · 1.3 MB»), tambien en Reportes y Drive; Drive gana «Copiar imagen», una imagen dentro de una nota abre el visor y los controles de zoom se esconden solos.",
+        "En el CRM, las tablas dejan fijos los titulos al bajar y llevan una barra de desplazamiento horizontal siempre a la vista; la nueva columna «Permanencia» (cuanto lleva el cliente donde esta: en el Banco, en la Base o con su asesor; se activa en «Columnas») se puede filtrar por «N dias o mas»; en Archivados y Perdidos las salidas del cliente se pliegan y el ojo muestra el motivo completo. Una cita abierta desde un aviso se abre en la vista elegida del calendario, el detalle de una venta muestra su comentario, y el comentario a medio escribir se guarda como borrador que caduca a los 3 dias. Si otra persona manda a Archivado, al Banco o a la Base a un cliente que llevabas, o lo marca perdido, dejas de verlo y recibes «Se te retiro el cliente», o «Se te retiraron N clientes» si fueron varios; si lo cambias tu, no hay aviso. Cuando entran clientes al Banco llega un solo aviso «Hay clientes nuevos en el Banco». Las fotos de los comentarios del cliente se ven en pequeno (o solo el nombre, en Preferencias). Las notas largas ya no se pierden al cerrar la pestana o al perder la conexion, y los avisos de tareas, citas y solicitudes desaparecen solos al atenderlos."
+      ],
+      "paraQuienAdministra": [
+        "Ajustes › Integraciones › Telefonia se reorganiza en Proveedores, Lineas, Personas y Comportamiento: se dan de alta proveedores SIP y lineas (compartidas o por persona) y se detecta su estado; cada persona tiene un panel «Que puede hacer» con permisos de telefonia propios; y Comportamiento fija la regla de traspasos (rechazar o solo contestar, por superior o por companero, y su vencimiento), lo que se pide al colgar, la duracion maxima de una llamada (2 horas de fabrica) y el alta de usuarios. Desaparece la pantalla Extensiones. Las notas de otra persona solo las abre quien tiene un rango mayor, como en el chat.",
+        "El area de Usuarios se redisena: lista, ficha, creacion y edicion con una tarjeta Telefono en el alta y un menu de acciones por persona, y el control de pagina de las listas queda como una pildora flotante que no tapa el chat. Las campanas del CRM pasan a mayusculas y las tablas de Ajustes se ven en cebra. Ajustes › General › Codificacion estrena «Animaciones convertidas a la vez» (de 1 a 4, 2 de fabrica) para limitar cuantas conversiones de imagen animada corren a la vez.",
+        "Correcciones de seguridad: la pasarela de telefonia exige ahora identificar a quien llama y cada ticket de llamada sirve una sola vez; el numero publico de una linea solo admite digitos (los guardados con separadores se limpian al actualizar); las imagenes animadas con cabeceras hostiles ya no pueden colgar la conversion, que tiene topes de tamano y de simultaneidad; nginx queda mas estricto y se actualizan dependencias con avisos conocidos, de 54 a 5. Redis pasa a Valkey con el mismo nombre de servicio. No conviene activar la telefonia en un servidor hasta aplicar esta version."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": false
+    },
+    {
+      "version": "0.12.12-beta",
+      "publicadaEl": "2026-10-18T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:fc31ca798bcf941078dd28abb1b3bc72dd0629563e45d1e5c20de07990cc57e0",
+        "web": "sha256:c10df74c3866a460a67c25a0db0694523e1ee67c09defdaf61cc2d501018d4c2",
+        "pantallas": "sha256:36a5aaef07b04485a7139cca069d4e7591bbb1566dd1d331c91b74256fd91c44",
+        "freeswitch": "sha256:c3e671c0304ec330cdb62120303debb2136157d81701e603b90bed8b29815253"
+      },
+      "paraQuienUsa": [
+        "Llamar desde el navegador ya funciona: la llamada conecta y se oye, tambien con varias pestanas abiertas. El telefono es una sola pildora con su estado; al abrirla, el marcador va en su propia pestana, aparte de Telefono y Audio, y «Llamar al eco» para probar el sonido es la ultima opcion de Audio. Un microfono o unos auriculares nuevos aparecen sin recargar, y si el navegador bloquea el microfono se dice como permitirlo. La llamada que haces vive en la pestana donde pulsaste Llamar: si intentas cerrarla con la llamada en curso, el navegador pregunta antes; las que llegan suenan en todas las pestanas y se atienden en una ventana pequena propia. En la ficha del cliente, llamar es un icono discreto junto al numero. Quien no tiene linea para llamar hacia fuera no ve el telefono, salvo cuando un companero le pasa una llamada, y solo para esa llamada. Si se retira el permiso de telefonia o se apaga el modulo, la llamada en curso se corta en el momento.",
+        "El Drive trabaja como el de Google. Con su modulo encendido, desde Supervisor hacia arriba se abren y se editan dentro del sistema los documentos, hojas de calculo y presentaciones (con Collabora) y los PDF (con Euro-Office), con «Abrir con...» para elegir el otro editor; si el archivo ya esta abierto en el otro editor, se abre en solo lectura y lo avisa. El boton «Nuevo» y el clic derecho › Crear hacen un documento, una hoja, una presentacion o, con Collabora, un dibujo en blanco, y la entrada «Documentos» del menu lleva a los recientes; al crear desde ahi se elige la carpeta (de fabrica, Mi unidad). Al cerrar sesion con un documento abierto, se guarda antes. Al compartir se elige Ver, Comentar o Editar, y una casilla aparte decide si puede descargar, imprimir y copiar (quien edita siempre puede); quien no tiene acceso lo puede pedir, y llegan avisos al compartir, al mencionar a alguien y al pedir o conceder acceso. Se guardan las tres ultimas versiones y las que tienen nombre, y quien puede descargar puede hacerse una copia en su Drive. Lo que ya estaba compartido permite lo mismo que antes: «Descargar» y «Editar» pasan a Ver con la casilla de descarga marcada.",
+        "En el CRM, las ocho tablas de clientes tienen una sola barra para bajar, la de la pagina: los titulos quedan fijos arriba al bajar y la barra para moverse de lado va pegada abajo, siempre a la vista; el control de pagina sigue igual. Al borrar una nota para siempre se borran tambien sus fotos, y las fotos que se quitaron del texto se borran solas pasados 15 dias. En la verificacion en dos pasos, un codigo rechazado ya no se queda escrito en el campo: se vacia y el siguiente entra sin recargar la pagina."
+      ],
+      "paraQuienAdministra": [
+        "Ajustes › Integraciones › Telefonia queda en Proveedores, Personas y Comportamiento: las lineas viven dentro de su proveedor, en las pestanas Conexion, Lineas e Importar. Una linea se prueba antes de guardarla (si no se prueba, queda «Sin comprobar») y hay «Guardar y anadir otra»; tambien se importan desde Excel o CSV: se prueban todas de 3 en 3, las mal escritas se descartan y las que fallan la prueba se crean marcadas (o se dejan fuera con una casilla). Retirar un proveedor retira sus lineas y reactivarlo las devuelve, salvo las que se retiraron a mano; retirar conserva el historial, eliminar solo vale para lo que nunca se uso, y si no se puede el motivo se ve junto al boton. Personas se filtra por linea, proveedor y rol. Comportamiento suma la fila «Llamar y recibir llamadas» en «Quien puede», y las tipificaciones de las llamadas se editan aqui con el permiso de configurar la telefonia. Cada llamada guarda quien colgo, y los reportes de llamadas traen el informe de contactabilidad por resultado; los traspasos ya no tienen tope y cuentan cuanto duro el tramo de quien recibe.",
+        "Ajustes › Modulos trae dos modulos nuevos, Collabora y Euro-Office, que llegan a todas las instalaciones apagados; pueden estar encendidos a la vez y solo los ven y usan Supervisor y los rangos superiores. La primera vez que se enciende uno, la API se reinicia una vez (unos segundos sin servicio para todos) y el servidor descarga el editor: Euro-Office pesa unos 2,5 GB y tarda. Encendido, cada editor reserva memoria del servidor: hasta 1,5 GB Collabora y hasta 3 GB Euro-Office. El editor solo abre desde la direccion principal del sistema, no desde un alias como www. Euro-Office se ofrece como modulo de prueba.",
+        "Ajustes › Seguridad › Politicas estrena «Volver a entrar tras dias sin usar el sistema» (1, 3, 7, 14, 30 o 90 dias; 3 de fabrica): cada vez que la persona trabaja, el plazo vuelve a empezar. Las versiones nuevas se buscan cada 6 horas y se descargan solas en segundo plano, asi que al aplicarlas ya estan bajadas; aplicar sigue siendo cosa del administrador. Ajustes › Roles y los reportes guardados vuelven a abrir. El servidor se ordena solo al actualizar: nginx pasa a 1.30 y reutiliza las conexiones con la API; la clave de Valkey deja de verse en la lista de procesos y se cambia una vez, con unos segundos de corte unos minutos despues de actualizar; el registro del sistema queda con un tope de 500 MB; las copias de seguridad, tambien las que ya existian, solo las puede leer el sistema; las sesiones caducadas hace mas de 30 dias se borran cada noche; la tarjeta de reinicio avisa si un reinicio pedido no llego a hacerse; y, con Valkey sano, se borran el volumen y la imagen del Redis viejo y la imagen vieja de nginx. El registro de errores ya no guarda los tokens de los webhooks ni de los editores."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": false
+    },
+    {
+      "version": "0.12.13-beta",
+      "publicadaEl": "2026-10-20T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:8c4b3d7b76c7fc028bbd5443c88dcbf395a546686eaa82e98287d369469a0f4a",
+        "web": "sha256:6eaff1b2b3028233f5cd34e39e76a7974d1579dc86f2e1c617c2c522edcd3bff",
+        "pantallas": "sha256:01f8e5f26bf14c3270c08215e56b77c8d8ed433034b7419169652f4ee7e99e15",
+        "freeswitch": "sha256:640cbf9b769fb36f393a29f43c39a33f0cf5a9c42613d4c0f3c444af23f56a33"
+      },
+      "paraQuienUsa": [
+        "Las llamadas desde el navegador son más fiables: si la red de la oficina no deja pasar el audio directo, va por un servidor de respaldo de la propia instalación, y entre el navegador y la centralita la voz va en Opus cuando se puede, que se oye mejor. Si el navegador bloquea las llamadas no se marca y se dice cómo desbloquearlo, y si va a volver a pedir el micrófono se avisa de que lo recuerde. En «Teléfono y audio» se puede apagar la reducción de ruido del navegador en ese equipo, para quien ya filtra el ruido con otro programa; la voz del cliente llega siempre tal cual, sin filtros. Si se cae el wifi a mitad de llamada, la llamada sigue abierta con «Reconectando…» unos 50 segundos y, si no vuelve, se dice por qué se cortó. Un intento que no llegó a marcar ya no aparece en el historial y se puede volver a llamar al momento. «Mis llamadas» ocupa todo el ancho, lleva a la ficha del cliente cuando se puede abrir y enseña la calidad de cada llamada (Buena, Con cortes o Mala, y si fue directa o por el servidor de respaldo); ahí y en la pestaña Llamadas de la ficha, cada llamada contestada dice cómo terminó: quién colgó, si se cortó por la red o por el tiempo máximo, o si la cortó el sistema o un supervisor. Un fallo de audio del navegador se lee «El navegador no conectó el audio», no «Número no válido». El historial conserva el nombre de la línea, del proveedor y del cliente aunque después se eliminen («Carla Pérez (cliente eliminado)»), y las llamadas del marcador muestran el número marcado. Si quien supervisa pasa tu llamada a un compañero, te llega un aviso.",
+        "El sistema se usa bien en el móvil y en la tableta, en vertical y en horizontal y también instalado como app, en todos los módulos menos Docs y Telefonía, y sin quitar nada del PC. En el teléfono hay una barra abajo con Inicio, CRM, Chat, Agenda y Más; las opciones salen en hojas que suben desde abajo, y mantener pulsado abre el menú o, en las listas con acciones en bloque, selecciona. En el CRM las listas se ven en tarjetas (con «Ver como tabla» a un toque), vuelve el tablero con una etapa por pantalla y «Mover a…», deslizar una tarjeta llama o agenda, los filtros van en una hoja con «Ver N resultados», y la ficha va por pestañas (Datos, Actividad, Llamadas y Archivos) con Llamar, Comentar y Cita siempre a mano abajo. En el chat se ve la lista o la conversación (en la tableta, las dos), deslizar un mensaje lo responde y la ventanita queda encima de la barra. En el Drive mantener pulsado selecciona y hay Deshacer al enviar a la papelera; en la Agenda vuelven la semana y la tabla y el tablero de tareas. Inicio, Reportes, Ajustes y Notificaciones se recolocan para la pantalla pequeña. Los números se escriben en formato español en todo el sistema, también el dinero, los reportes y lo que escribe el servidor (historial del cliente, avisos, exportaciones): «$2.500,50», «12,5 %», «1.234», con el símbolo de la moneda elegida en Ajustes › General, y los tamaños se leen igual en todas partes («1,3 MB»).",
+        "Con las llamadas del chat encendidas, en una conversación privada se puede llamar por voz a la otra persona (para llamar hace falta permiso; para contestar, no): la llamada se ve en todo el sistema, se atiende igual desde la ventanita y cerrarla no cuelga; si entra una de teléfono, gana el teléfono y la del chat queda en pausa con el micrófono cerrado. Por ahora son de dos y solo de voz, y recargar la página a mitad de una la corta para quien recarga. Quien editó un mensaje puede ver sus versiones anteriores con «Ver ediciones». En Inicio, cada editor encendido tiene su baldosa («Docs1» es Collabora, «Docs2» es Euro-Office, y «Docs» si solo hay uno); desde el Drive los documentos se abren en una pestaña nueva, el clic derecho ofrece «Abrir con Collabora» o «Abrir con Euro-Office», y «Cerrar allí y abrir aquí» lo cierra en la otra pestaña que lo tiene con el otro editor. El aviso «Se abrió tu sesión en otro equipo» sale una sola vez. En el CRM, Gestión › Activos › Asignados marca y quita favoritos en bloque (solo de los clientes que lleva quien pulsa); «Continuar» una importación cortada manda al corrector las filas que fallaron, también las de antes del corte; y los motivos de rechazo al dar de alta un cliente salen en español. Además: las listas paginadas vuelven solas a la última página que existe, en Captura › Importar archivo la zona para soltar el archivo llena todo el alto, si un comentario se guarda pero la lista no se actualiza se dice, las ventanas de confirmación se anuncian con su título al lector de pantalla y los mensajes de error llevan sus tildes."
+      ],
+      "paraQuienAdministra": [
+        "Con la telefonía encendida, el sistema monta su propio servidor de respaldo de audio, que solo reenvía hacia la centralita, y abre solo en el cortafuegos del servidor los puertos 3478 y 5349; unos minutos después de actualizar, la API se reinicia una vez (unos segundos sin servicio) para recibir su clave. En Ajustes › Integraciones › Telefonía los proveedores y las líneas se pueden eliminar siempre y se editan desde su menú, y el historial conserva el nombre de la línea, del proveedor y del cliente. El proveedor solo agrupa: servidor y «Número para todas las líneas» son opcionales, y la línea no exige número. Cada llamada sale con el número de su línea, si no tiene con el del proveedor, y si tampoco con el que ponga el operador; ojo: una línea con número anotado en un proveedor que antes no lo enviaba ahora sale con ese número, así que conviene hacer una llamada de prueba por ese proveedor. El importador va al revés: a la izquierda cada campo del sistema y, en cada uno, la columna del archivo que lo llena. «Probar línea» prueba lo escrito sin guardar, «Detectar ajustes» con una clave mala dice que el proveedor la rechaza, archivar a una persona deja libre su línea y cambiarle la clave del teléfono lo vuelve a registrar sin recargar. Desde la consola de Telefonía, quien tiene el permiso nuevo de pasar llamadas ajenas (de fábrica, Gestor hacia arriba) pasa la llamada de otra persona a un compañero; si el compañero no contesta, el cliente vuelve a quien la tenía. La consola ocupa todo el ancho. Reportes › Llamadas trae «Por quién colgó»: de las llamadas que se hablaron, cuántas colgó quien llamó, cuántas el cliente y cuántas se cortaron por la red, por el tiempo máximo o por el sistema, con filtro de asesor y de mesa; las anteriores, que no lo guardaban, salen como «Sin dato».",
+        "Las llamadas del chat son independientes de la telefonía y llegan apagadas a todas las instalaciones. Se encienden solo desde Chat › Configuración › Gobernanza, en «Llamadas del chat», y solo un superadministrador: «Solo voz» arranca el servidor de llamadas (el control dice «Encendiendo…») y el sistema abre solo los puertos 7881 (TCP) y 7882 (UDP); «Ninguna» corta al momento las llamadas en curso y lo apaga. El video llega en una próxima versión. La primera vez la API puede reiniciarse una vez (unos segundos sin servicio); en reposo el servidor usa unos 16 MB, y una oficina cuyo cortafuegos no deje salir por esos puertos no podrá llamar. El registro de las llamadas se borra con la misma retención que el historial del chat. Iniciar una llamada es un permiso, de fábrica desde Asesor. Otro permiso nuevo deja ver las ediciones y el contenido borrado de los mensajes ajenos: de fábrica solo el Super Admin, se da por rol o por persona, solo alcanza a quien está por debajo en la jerarquía y en conversaciones que ya se pueden leer, y cada consulta queda en la auditoría. En Gobernanza › Mensajes, «Aviso de mensaje eliminado» deja el aviso siempre o lo oculta tras 1 hora, 1 día o 7 días. «Sesión en el PC y en el móvil a la vez» se configura por rol en Ajustes › Roles y, encima, por persona en Ajustes › Usuarios («Como su rol», «Sí» o «No»), y manda la persona: de fábrica ningún rol la tiene; con ella se admite como mucho una sesión de PC y una de móvil, ante la duda el equipo cuenta como PC, y el cambio vale desde el siguiente inicio de sesión.",
+        "Desde la actualización siguiente a esta, la pantalla de Actualizaciones enseña el progreso real de la descarga (porcentaje, MB bajados de los totales, velocidad, tiempo que queda y cuánto baja cada parte), con «Reintentar ahora» si la descarga falla; aplicar una versión ya no corta el sistema, porque la versión vieja sigue respondiendo mientras arranca la nueva; y en los cortes de unos segundos que quedan se ve la pantalla «Estamos actualizando el sistema» en lugar de un error (con los pasos para quien actualiza), y quien ya tenía el sistema abierto ve un aviso y conserva lo que estaba escribiendo. Pasar de 0.12.12 a esta todavía corta alrededor de medio minuto, como la anterior, porque lo conduce el programa de actualización de 0.12.12. Los interruptores de Ajustes › Módulos que encienden la telefonía o los editores dicen solo «Encendiendo…» o «Apagando…», con el detalle al pasar el ratón. Seguridad: el servidor exige ahora los permisos del CRM para marcar favoritos, uno a uno y en bloque, y para retirar campos personalizados, y sin el de elegir columnas la tabla se ve con las de fábrica; quedan en la auditoría la descarga de un ZIP del Drive, la configuración de la verificación en dos pasos (la propia y la que un administrador hace para otra persona) y cada consulta de ediciones o borrados del chat; y las llamadas del chat entran con una llave que caduca al minuto, solo vale para el micrófono y solo la reciben los dos de la conversación. En los webhooks, una entrada ya resuelta no se puede volver a resolver, un origen revocado no cambia su mapeo, y repetir una Idempotency-Key con otro contenido responde 422. Las descripciones de los permisos en Ajustes › Roles llevan sus tildes."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": true
+    },
+    {
+      "version": "0.12.14-beta",
+      "publicadaEl": "2026-10-21T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:8594f422ee5e77de669fabb62b7b9888bddc8a48ffb320eebf9a688cb98a2f1e",
+        "web": "sha256:c6f2c74265371ae80d195343f239558671e867425a13f62eead13221b39630c5",
+        "pantallas": "sha256:2787fbf1215f0b0e4502dfb2916e0be6a7d756b53e9184fa207c4c693c077043",
+        "freeswitch": "sha256:0cac4ef7bd927dade0fe17e7202192357401ff2766afabf00f53bdd8c239ed12"
+      },
+      "paraQuienUsa": [
+        "Las llamadas dicen en palabras cómo terminaron, igual en el historial, la ficha, Mi desempeño y los informes: «Ocupado», «No contestó (61 s)», «Se colgó mientras sonaba (12 s)», «En curso» o «El operador no conectó la llamada», y ya no «Se cerró el navegador» ni «Fallo de red» cuando no lo eran. Al colgar o al tipificar, la ficha, «Mis llamadas» y Mi desempeño se actualizan solos. En Windows, «El del sistema» usa el micrófono de comunicaciones (el de los cascos) y enseña su nombre; la elección se recuerda al cerrar sesión, y si se desconecta el casco se usa el del sistema y se vuelve solo al conectarlo, también en plena llamada. La reducción de ruido del navegador se guarda en tu perfil: encendida en el móvil y apagada en el PC de fábrica. Con el teléfono abierto en su propia ventana, la píldora la trae al frente en vez de abrir otro marcador, y la ventana se usa entera.",
+        "Las llamadas del chat vuelven a funcionar. «Ver contenido» de un mensaje eliminado enseña también lo que decía antes de editarse. Los stickers se crean bastante más rápido y pesan como mucho lo que diga la configuración del chat, y un vídeo enviado «como archivo» llega tal cual, sin recomprimir. En el editor de imagen, «Deshacer» y «Rehacer» siguen el orden real, hay «Otro color», y los textos se pueden mover encima del dibujo hasta pulsar «Listo». La nota despegada cambia de color desde su cabecera, y en el registro del cliente todos los adjuntos salen en el mismo cuadro, con su miniatura o el icono de su tipo.",
+        "En el CRM, «Volver arriba» aparece también con una sola página. Ajustes usa todo el ancho de la pantalla y alinea sus controles. Desde el Drive los documentos se abren en una pestaña propia sin el marco del sistema, y el visor ofrece «Abrir con…». Si se cierra tu sesión porque entraste desde otro equipo, se dice así, y quien puede cambiarlo ve el enlace «Permitir PC y móvil a la vez»."
+      ],
+      "paraQuienAdministra": [
+        "Telefonía: la supervisión vuelve a funcionar y es silenciosa: Escuchar, Susurrar e Intervenir se conectan solos en el teléfono de quien supervisa, sin pedirle nada, y el asesor no recibe tono ni aviso. La consola muestra a todas las personas de tu alcance con permiso de usar el teléfono, aunque no tengan línea, no salta al llegar una llamada, conserva el nombre del cliente, deja elegir columnas y ofrece «Tomar la llamada». Los errores dicen la causa real en vez de «no responde». El importador de líneas acepta una columna para varios campos, líneas sin clave (autenticadas por IP), los campos de un softphone y títulos en inglés, prueba la primera fila antes de revisar y deja editar cada fila. «Dar teléfono» elige la línea en el mismo paso (la libre más baja en orden natural) y las líneas se rotulan «Línea 1002 · …5720». Personas no enseña a los archivados.",
+        "Seguridad: toda ruta nueva de la API nace cerrada salvo las públicas marcadas, el código de verificación en dos pasos solo vale una vez, los cambios de permisos se aplican al momento sin recargar, el error de acceso es genérico y la página del sistema usa una política de contenido con nonce. La auditoría guarda la IP y el navegador, también al activar el modo superadministrador, y el registro de errores pone tope a lo que llega sin sesión. Los avisos y errores de la API sobreviven a las actualizaciones (hasta 20 MB) y el registro de nginx mide el tiempo de cada petición sin guardar los enlaces de los documentos.",
+        "Las llamadas antiguas que se registraron como «Se cerró el navegador» pasan solas a «Se colgó mientras sonaba» al actualizar. Las que salían como «Fallo de red» y en realidad no contestaron se corrigen aparte, con una herramienta que primero informa sin escribir. El sistema sube el búfer de red que usan las llamadas del chat y quita un aviso repetido de la centralita."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": true
+    },
+    {
+      "version": "0.12.15-beta",
+      "publicadaEl": "2026-10-27T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:1a96564cd11d3c077580c994d3db293c2fb9e30b25f97ea2492cedd63a623e75",
+        "web": "sha256:dba542bef9327a16edf7a3bda460f5b3528dd72efbade577386543f33d1ce74d",
+        "pantallas": "sha256:d70e9f82ddbc4e553bbbd93ab3f82114dec99be4d2dc4a46f0b7e3c51e16d97b",
+        "freeswitch": "sha256:2117bda2cb815e8f8d29c6da09fbf7c54f787af18de223d5373f5838defc2b93"
+      },
+      "paraQuienUsa": [
+        "En el chat cada canal es de «Todo el equipo», «De una mesa» o «Por invitación», y solo se ven los canales de los que formas parte; uno archivado deja de verse. Su icono dice de qué forma es.",
+        "En Telefonía, «Mis llamadas» pasa a llamarse «Historial» (en el buscador, «Historial de llamadas»), y en el móvil las secciones del módulo salen en un índice arriba en vez de en un menú lateral. Quien tiene permiso de grabar graba desde «Grabar» hasta «Parar» o hasta colgar. La cita dice cuándo y quién la marcó como hecha, no realizada o cancelada.",
+        "Los documentos, hojas y presentaciones se editan con un único editor para todos. Descargar varias cosas del Drive a la vez baja un archivo comprimido con el nombre de la carpeta en la que estás."
+      ],
+      "paraQuienAdministra": [
+        "Chat: al pasar un canal a «Todo el equipo» se dice cuántas personas verán el historial; al eliminarlo, cuántos mensajes y adjuntos se pierden, y se recomienda archivar. Administración ve los archivados y puede reabrirlos. Quien se suspende conserva sus canales; quien se archiva o elimina sale de todos.",
+        "Grabaciones: se configuran por reglas (todo, líneas, personas, mesas o campañas, con horario, días y duración mínima) en Ajustes › Telefonía › Grabaciones, con el permiso por rol y excepciones por persona, y los días que se conservan las temporales. Escuchar una grabación queda en la auditoría, y la que se hace desde la consola no la ve el asesor. Las líneas de quien se archiva o elimina quedan libres.",
+        "Almacenamiento enseña el disco entero del servidor y cuánto ocupa cada parte. En la unidad General se pueden crear carpetas que solo ve Administración. El editor Collabora se retira: queda un solo editor de documentos."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": true
+    },
+    {
+      "version": "0.12.16-beta",
+      "publicadaEl": "2026-10-27T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:b5e105e5c77e10f281b919186ea8dde23dd3dac7590519541f2f24ed59d824e4",
+        "web": "sha256:d33cc017228694b26d0bbfb40ecf1ee60d21decd4b5c13784e561d0f4cadbba4",
+        "pantallas": "sha256:3e556ea5254ed90c24c3dee315fb036926267d9ccdc5028785f79b047a752c67",
+        "freeswitch": "sha256:96202bdd55a596a00ad7bc4aea74413f12380f3badd1769a525cf9fd8a2705d6"
+      },
+      "paraQuienUsa": [
+        "Quien graba una llamada pulsa «Grabar» y la para con «Parar» o al colgar, y un aviso dice «Grabación finalizada». La grabación ya no aparece en su historial ni en la ficha del cliente: si la necesita, se la pide a quien puede escuchar grabaciones."
+      ],
+      "paraQuienAdministra": [
+        "La actualización a la 0.12.15 se detenía sin cambiar nada porque los complementos del editor traían nombres de fichero con «@». Esta versión los renombra, trae todo lo de la 0.12.15 y comprueba esa regla al construir cada versión.",
+        "El servidor mira cada hora si hay una versión nueva y la descarga de fondo; antes, cada seis horas. Aplicarla sigue siendo decisión de una persona.",
+        "Escuchar grabaciones, también las que uno mismo hizo, pide el permiso de escuchar, que de fábrica tiene Teamlead y los roles de arriba."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": true
+    },
+    {
+      "version": "0.12.17-beta",
+      "publicadaEl": "2026-10-29T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:d4d5b8afa63fa1e7c17fdf5df7aae715dbb8b2456023501549ca2caff5bc903d",
+        "web": "sha256:41715ec41ff3bd3b29123da5a4cef4100ec75e60d364dd7a273921f295ffaa93",
+        "pantallas": "sha256:6e312e229daa9192f72803ee9238b0b762ac9af80e3feed8a449f3d293c0bb8d",
+        "freeswitch": "sha256:62ae55411ee2a805cbbf317abf1a833d2522d95308ab0a08bae60563948f9ccc"
+      },
+      "paraQuienUsa": [
+        "Al pulsar un archivo se abre un visor con flechas para pasar al siguiente, y los documentos se ven tal cual, también en el móvil. Para cambiarlos, «Abrir con Docs»; si solo puedes verlo, «Hacer una copia».",
+        "En Documentos hay una fila de plantillas: «Usar plantilla» crea tu copia al momento en Mi unidad, y si la cierras sin escribir nada se borra sola.",
+        "Al colgar, la línea queda libre al momento, pasar de un cliente a otro ya no se traba y el sistema no se vuelve lento con las horas. Además puedes elegir tu apariencia: Sólido o Glassy, claro, oscuro o automático, y un color."
+      ],
+      "paraQuienAdministra": [
+        "Los permisos del Drive se dan por carpeta y por archivo, con «Ve» y «Edita», y los de hoy no cambian. General tiene su papelera, y una carpeta marcada como de plantillas limpia cada día las copias que nadie tocó en 7 días.",
+        "Supervisión: escuchar no pide micrófono y solo una persona a la vez susurra o interviene. 27 permisos de administración ya no se pueden dar a un rol inferior.",
+        "Arreglada la caída del 28-10: las tareas de madrugada ya no bloquean la base, y si algo se atasca el sistema se reinicia solo. Al actualizar, la base se reinicia unos segundos."
+      ],
+      "accionesManuales": [],
+      "requisitos": [],
+      "seguridad": true,
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": true
+    },
+    {
+      "version": "0.12.18-beta",
+      "publicadaEl": "2026-11-04T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:d085e8d8998c5e51467178ec0de938d37ac425916ef2410158c5ed354fa92ee2",
+        "web": "sha256:ff7ac44702960366cc674b7b9ba524c1faebff61b45266bc3ab14dd2b5124760",
+        "pantallas": "sha256:85f7fab80bbed654af99038f5c01d30e789d2747c087f6e8fa1c3ac255917dc2",
+        "freeswitch": "sha256:30c1f403aeaba05701b63736ec0c379ec61351a328fea608727512ab597d2c27"
+      },
+      "paraQuienUsa": [
+        "WhatsApp llega como módulo nuevo, apagado de fábrica: quien tiene el permiso de administrar números (de fábrica, Administración) los conecta por QR, y se atiende a los clientes desde su pantalla o desde la ficha. El chat y el Drive admiten notas de voz en formato OGG.",
+        "El correo también es un módulo nuevo, apagado de fábrica: quien tiene el permiso de usar el correo (de fábrica, hasta Gestor) conecta su buzón y escribe a sus clientes desde la ficha. Noticias es otro, apagado de fábrica: muestra titulares de las fuentes que se configuren. El calendario suma festivos por país, relojes del mundo, un conversor de moneda de referencia y cierres de oficina, todo apagado de fábrica. En Gestión › Activos hay columnas Días en etapa y Días con asesor, con filtro y umbral por etapa, y Reportes tiene Tiempos por etapa.",
+        "Ahora el sistema te avisa antes de tus citas: eliges cuánto antes en Preferencias › Notificaciones, o lo apagas; de fábrica, 15 minutos. En el visor los documentos se acercan y se alejan, la lista del Drive vuelve a mostrar iconos y la sesión caduca al terminar el tercer día sin usarla. Al actualizar se cortan las llamadas en curso, sin aviso del sistema: conviene avisar por el chat; al terminar, cada pestaña abierta entra sola en la versión nueva. Al abrir un archivo, el PC ya no guarda una copia de los originales en su disco, y las miniaturas se comprueban con el servidor antes de enseñarse."
+      ],
+      "paraQuienAdministra": [
+        "Permanencia, Días con asesor y Días en etapa se configuran en Ajustes › Seguridad › Visibilidad: de fábrica solo los ven Gestor o superior, y Team Leader, Asesor y Vista dejan de verlos. En el Drive, «Edita: Sí» en una carpeta de General deja crear y subir dentro, y «Quién ve y edita General» está en el «…» de la raíz.",
+        "Cada versión puede publicarse como Normal, Importante u Obligatoria, y las vencidas se aplican solas salvo que se apague en Actualizaciones; funciona desde la versión siguiente a esta. Entre las cuentas de nivel 0 manda la fundacional. Noticias, tasas, correo y WhatsApp corren en contenedores aparte, sin acceso a la base de datos del sistema, y solo la API los consulta. Esta actualización la dirige el programa de la versión anterior: noticias y tasas pueden decir «no disponible» hasta la siguiente, y la barrera de vuelta atrás y el arreglo de seguridad del actualizador actúan desde la siguiente.",
+        "Un Supervisor o un Gestor da teléfono y reparte líneas a su gente. Quitar el teléfono con sus líneas, o una línea, a quien está en llamada la corta al momento, y Actualizaciones dice cuántas cortó la última. En Telefonía se puede probar otro colchón de audio por persona. Las fuentes de noticias las configura el Administrador, y los cierres de oficina del calendario, un Gestor o superior. Si un PC va lento, el sistema lo detecta y lo muestra en Ajustes › Sistema › Diagnóstico."
+      ],
+      "seguridad": true,
+      "accionesManuales": [],
+      "requisitos": [],
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": true,
+      "nivel": "obligatoria",
+      "modo": "inmediata"
+    },
+    {
+      "version": "0.12.19-beta",
+      "publicadaEl": "2026-11-06T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:0f1b4b15ca986dfd9b796609e83521a3980cf48d26951b649907f3fee1d86ccc",
+        "web": "sha256:43be83082a12a70c01c07d7b484dcf937e905c04a80cad99d80850b33e65492f",
+        "pantallas": "sha256:63be3d2cc8bafc3b0fa4885ec82fb049a05441363e9b6f3244775488793b8586",
+        "freeswitch": "sha256:59edcaf908a0c2c153206d75677aade5db688ebeaa4bc58eb36fd029e2e14375"
+      },
+      "paraQuienUsa": [
+        "WhatsApp y el correo siguen al cliente: quien lo lleva ve y contesta sus mensajes, y ya no hay «Tomar». WhatsApp se atiende a pantalla completa, con notas de voz, citas y reacciones; el correo tiene bandeja de tres paneles, y desde la ficha se escribe con plantilla. Firmas y plantillas salen tal como se escribieron, y la firma es opcional.",
+        "Noticias pasa a Agenda, con foto y resumen. También en Agenda, la pestaña Reloj trae ciudades, regla de tiempo, conversor con cripto, alarmas, temporizador y cronómetro. En Preferencias eliges 12 h o 24 h, festivos y los avisos de citas y tareas: de fábrica, 5 minutos antes y al momento.",
+        "En el chat el mensaje sale al pulsar enviar y las ventanas flotantes son las mismas en todas las pestañas; en la ficha, un comentario entra sin recargarla. Si la operadora rechaza las llamadas de tu línea, el sistema te avisa de que no es el cliente, y si las rechaza en todas, te dice que el administrador ya está avisado. En el Drive se suben carpetas enteras y las carpetas pueden llevar color; importar leads acepta también ODS, TSV, TXT, JSON y XML; y Docs se reconecta solo."
+      ],
+      "paraQuienAdministra": [
+        "Correo, WhatsApp y Noticias se administran ahora en Ajustes. Los buzones los conecta Administración y se asignan a personas o mesas, agrupados por dominio. Las firmas no toman datos del sistema: se copian, se cambian y se asignan a cada persona. Buzones y números son de la empresa y se pueden revisar: conviene decirlo en el contrato y en la política interna.",
+        "El correo se sincroniza en los dos sentidos: eliminar lo lleva a la Papelera del proveedor, nunca lo borra definitivamente, y queda en Auditoría. Microsoft, Google, InterServer y WhatsApp con un número real siguen sin probarse con cuentas reales: conviene probarlos antes de depender de ellos.",
+        "De fábrica, Asesor y Team Leader siguen sin Correo ni WhatsApp: sus clientes caen en «Sin asesor» hasta conceder el permiso. Reportes › Llamadas gana las mejores horas por país, y si el operador rechaza las llamadas en todas las líneas, Administración recibe un aviso. Al actualizar o reiniciar, las llamadas se cortan antes y en orden, y se ve «Actualizando»; esta vez rige desde que termine la actualización. Ningún paso pide entrar al servidor."
+      ],
+      "seguridad": true,
+      "accionesManuales": [],
+      "requisitos": [],
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": false,
+      "nivel": "obligatoria",
+      "modo": "inmediata"
+    },
+    {
+      "version": "0.12.20-beta",
+      "publicadaEl": "2026-11-11T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:53392e1243a46d2bbd80ed9dca98de186324ccc42e120ec23f14adc0f87a76ea",
+        "web": "sha256:ffa8624b5ef8bbf68e21ead8495afaee64c9b31bcd5e4b1146c78f1cc93107a0",
+        "pantallas": "sha256:6b9f05786bc3dd8de99f945ab7f6c574a265bfc5dc634caf7dd4e17892bb2a20",
+        "freeswitch": "sha256:391d6f530ea1345cb4669ec45b64f08e47aff37cf00040d3f556e86948a8dc6e"
+      },
+      "paraQuienUsa": [
+        "WhatsApp suma burbuja y ventanas flotantes, plantillas, reenviar y conversación nueva escribiendo el número con su país. Las fotos seguidas se ven en mosaico, una foto se puede retocar antes de enviarla y Ctrl+V pega un archivo en el mensaje. Los envíos se pueden programar, también con archivos.",
+        "La barra de arriba lleva tus relojes, y Mercados pasa a Agenda › Reloj, con varios tipos de gráfica. En la ficha, las llamadas ocupan menos, la próxima cita se ve de un vistazo y cualquier teléfono se puede hacer principal. El correo se redacta en un panel, y el sistema puede proponer a qué cliente pertenece un correo para que lo confirmes.",
+        "En el Drive se copia, corta y pega con Ctrl+C, Ctrl+X y Ctrl+V, una carpeta que ya existe en el destino se puede combinar, y un archivo grande que se corta al subir sigue donde iba. En Ventas, quien puede ver el historial filtra «Solo editadas», y Reportes y su CSV dicen cuántas veces se editó cada venta. En Preferencias puedes guardar tus propios temas."
+      ],
+      "paraQuienAdministra": [
+        "Si un número de WhatsApp se desconecta y no hace falta volver a escanear el QR, el sistema lo reconecta solo y avisa a Administración a los 2 minutos. Lo que se escribe mientras tanto espera hasta 12 horas, o lo que se elija entre 1 y 24, y sale al volver; después se puede reintentar o cancelar. WhatsApp ya se probó con un número real.",
+        "Esta versión corrige lo que una persona podía ver de más en el correo, WhatsApp y el Drive, y el proveedor de cotizaciones de Mercados se elige en Ajustes. En el correo, Microsoft, Google e InterServer siguen sin probarse con cuentas reales: conviene probarlos antes de depender de ellos.",
+        "Las piezas internas del servidor se actualizan y la base de datos queda preparada para pasar más adelante a una versión más nueva; por ahora sigue en la misma. Se puede volver a la 0.12.19 solo con el programa, sin perder datos. Ningún paso pide entrar al servidor."
+      ],
+      "seguridad": true,
+      "accionesManuales": [],
+      "requisitos": [],
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": true,
+      "nivel": "obligatoria",
+      "modo": "inmediata"
+    },
+    {
+      "version": "0.12.21-beta",
+      "publicadaEl": "2026-11-14T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:ae78ca61ecbfcaddf52e5ffbba258b070e2e90cf2f546ce4c1fba646ad1d1056",
+        "web": "sha256:0e7076d8eb448f1221c556bd5b9e903119cdedf59196e9f0328385d8af4f8ef9",
+        "pantallas": "sha256:2af4c202e335c6010d147f58134b06a1eebdf67631d32c07f3826175262c7def",
+        "freeswitch": "sha256:9193e9061425a082e2362f25ba77a6b8e2c4650850e8ddd23897e7a76944d6b3",
+        "analytics": "sha256:5a583f4d88c1c9fd8bd341c50a3b6e43b576e37c3ee55a314736774746990b3e",
+        "pasarelaLlamadas": "sha256:f307203591cfebd579ac587cd706ea4baa2b4ef5a8e5398121139819484f7ae5"
+      },
+      "paraQuienUsa": [
+        "En WhatsApp, un número se une solo a su cliente cuando no hay duda; al borrar un mensaje se dice si el cliente todavía lo ve, y nada se pierde en Eliminados. Las llamadas de WhatsApp hacen lo mismo que las de Telefonía: pasar, poner en espera, escuchar, susurrar e intervenir.",
+        "En el CRM, la ficha se recorre por zonas en todas partes, los días por etapa dicen con qué asesor estuvo el cliente y Salidas dice quién lo tenía. Seguimiento ordena, filtra y agrupa las citas, y el buscador encuentra a un cliente por su número con #ID.",
+        "Las alarmas de la Agenda se pueden editar, suenan en una sola pestaña y se elige el tono o un sonido propio. El correo guarda borradores, tiene plantillas y deja enviar «sin firma»; las imágenes se copian y se pegan, y «atrás» cierra la vista previa."
+      ],
+      "paraQuienAdministra": [
+        "Entrantes dice por qué canal llegó cada cliente y tiene un Resumen, y los tableros suman métricas nuevas. La analítica avanzada de Reportes viene encendida de fábrica y arranca sola unos minutos después de esta actualización, si la comprobación de versiones está configurada.",
+        "La base de datos pasa a PostgreSQL 18.7 en esta actualización: el sistema copia los datos a la versión nueva y comprueba tabla a tabla que no falta nada, con el sistema parado unos minutos. La base anterior se queda guardada y sin usar, y se borra sola en la actualización siguiente, con el sistema sano y una copia de seguridad nueva; si algo falla durante la copia, se vuelve solo a ella. Después no se puede volver a la 0.12.20.",
+        "Esta versión trae arreglos de seguridad. En el correo, Microsoft, Google e InterServer siguen sin probarse con cuentas reales: conviene probarlos antes de depender de ellos. Ningún paso pide entrar al servidor."
+      ],
+      "seguridad": true,
+      "accionesManuales": [],
+      "requisitos": [
+        "Espacio libre en el disco del servidor al menos igual al que ocupa hoy la base de datos: hasta la actualización siguiente conviven la copia nueva y la anterior."
+      ],
+      "rompeCompatibilidad": false,
+      "duracionEstimadaMigracion": 2,
+      "vueltaAtrasSoloCodigo": false,
+      "nivel": "obligatoria",
+      "modo": "inmediata"
+    },
+    {
+      "version": "0.12.22-beta",
+      "publicadaEl": "2026-11-14T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:db5585047173bff4854ab6849412bd57fb16fd98d1733a2de03594c9d402d6df",
+        "web": "sha256:51621972aaf746c229dd771f4b185f4ef06ed2a08dfc64f318c1f4f077378aad",
+        "pantallas": "sha256:1d1af9f28e72b553aebc7b098d85831d163323bee3dfce141f4c9972e07dd27d",
+        "freeswitch": "sha256:9193e9061425a082e2362f25ba77a6b8e2c4650850e8ddd23897e7a76944d6b3",
+        "analytics": "sha256:5a583f4d88c1c9fd8bd341c50a3b6e43b576e37c3ee55a314736774746990b3e",
+        "pasarelaLlamadas": "sha256:f307203591cfebd579ac587cd706ea4baa2b4ef5a8e5398121139819484f7ae5"
+      },
+      "paraQuienUsa": [
+        "Inicio trae la cuadrícula y el estilo Clásico de fábrica, acento rojo, temas con efectos Glassy y un interruptor para ocultar los contadores de las apps; Preferencias queda ordenada. La pestaña dice el módulo abierto y cuenta solo lo suyo, y el chat y WhatsApp cuentan exacto y en vivo.",
+        "WhatsApp: en el móvil va a una columna; se seleccionan varias conversaciones para ocultar o marcar leídas; el botón flotante abre las no leídas, y los mensajes de clientes llegan a la campana, en la pestaña nueva «Clientes» junto al correo, y se marcan leídos al abrirlos. Los filtros se conservan, «Limpiar filtros» está en todas las listas, la foto de perfil se abre en grande y se ven los estados.",
+        "El correo vuelve a redactar y las imágenes del sistema se copian para pegarlas en Docs. El chat avisa con la burbuja aunque no quepa otra ventana. Noticias trae un panel de lectura ancho, vista previa de vídeos al pasar el ratón, canales de YouTube por enlace y fuentes que se recuperan solas; la calculadora abre en su ventana con historial."
+      ],
+      "paraQuienAdministra": [
+        "El Asesor y el Team Leader traen de fábrica ver y contestar sus conversaciones de WhatsApp (los roles ya configurados no cambian). Cada persona tiene cumpleaños (día y mes), que se asigna en Ajustes › Usuarios, y el cuadro de permisos de WhatsApp respeta las dependencias.",
+        "Encender o apagar un complemento ya no reinicia el sistema salvo que haga falta, y la pantalla se recupera sola tras un reinicio. Desde ahora las llamadas de WhatsApp y la analítica se descargan con cada actualización y quedan apagadas hasta encenderlas. Las obligatorias se aplican solas también cuando no permiten volver atrás.",
+        "WhatsApp pide bastante menos al servidor (filtros, presencia, fotos, adjuntos y sondeos). Esta actualización se aplica sola, sin parar el sistema más que unos segundos, y permite volver a la 0.12.21 si hiciera falta. Ningún paso pide entrar al servidor."
+      ],
+      "seguridad": false,
+      "accionesManuales": [],
+      "requisitos": [],
+      "rompeCompatibilidad": false,
+      "duracionEstimadaMigracion": 1,
+      "vueltaAtrasSoloCodigo": true,
+      "nivel": "obligatoria",
+      "modo": "inmediata"
+    },
+    {
+      "version": "0.12.23-beta",
+      "publicadaEl": "2026-11-20T00:00:00.000Z",
+      "imagenes": {
+        "api": "sha256:124d6721408be2edd2576980202fdd074930b89546a43d59dfc9729bf13029b0",
+        "web": "sha256:71e8ccbad869907a7399b4eb43e2e8fd39ad3354a01d91ab62ab4c8c212660c4",
+        "pantallas": "sha256:57fbcc93d4a09ea92a6d31fbf990eb27ae09d28e0eab571b9cdc4dcc8bbde637",
+        "freeswitch": "sha256:9193e9061425a082e2362f25ba77a6b8e2c4650850e8ddd23897e7a76944d6b3",
+        "analytics": "sha256:735933dc57d00b1b9b836b8f699879332ba6b4736e63c854d9057a221e6e13e0",
+        "pasarelaLlamadas": "sha256:fa035ee4f762f783ed0c5b6bc229d9c89bd723a3a3dd3bc244360c4dcb348c33"
+      },
+      "paraQuienUsa": [
+        "En el CRM, la ficha se recorre por zonas, el buscador encuentra clientes por #ID y Seguimiento agrupa los resultados según los filtros. Mi Desempeño reúne tu día, el avance hacia la meta del mes y la salud de tu cartera. Un comentario con solo un archivo ya no muestra «(adjunto)», y validar un archivo grande al importar clientes es mucho más rápido.",
+        "El correo conserva el borrador al navegar, admite copia y copia oculta, permite programar envíos y, en el teléfono, baja directo al redactor. El chat pinta un solo fondo en toda la pantalla. En Preferencias › Sonidos puedes subir un sonido propio de hasta 5 minutos, elegir el fragmento de 10 segundos y oírlo con un botón que muestra si suena o está parado.",
+        "En WhatsApp, la ficha junta los números en una línea y abre los archivos de la conversación en un panel sobre el hilo; un botón trae todos los archivos de una conversación, y si el servidor de WhatsApp no responde la pantalla lo dice y deja reintentar. Las llamadas de WhatsApp salen en la fila de su asesor en Telefonía."
+      ],
+      "paraQuienAdministra": [
+        "Si una línea de Telefonía no conecta en ese momento, la llamada sale por otra desde el primer intento, y Ajustes › Telefonía › Líneas dice «No conecta» con la hora desde la que falla. Telefonía muestra las llamadas de WhatsApp en curso, en el historial y en las grabaciones según los módulos y permisos activos; el límite de llamadas simultáneas y la grabación por rol se configuran en Ajustes. Mostrar el tiempo de timbre al asesor viene apagado.",
+        "Pantallas reúne Composiciones, Presentación, Biblioteca y En vivo: medios propios, envío a las pantallas elegidas y ruletas de premios; los medios entran en la copia de seguridad. En Correo se activa desde Ajustes la copia completa de los buzones o la aprobación de envíos (ambas apagadas). La matriz de visibilidad trae una opción apagada para que el asesor de un cliente vea fecha, monto y motivo de sus ventas anteriores con otros asesores. Quien baja de rol deja los puestos de mesa que su rol nuevo ya no permite.",
+        "Esta versión trae arreglos de seguridad: las subidas demasiado grandes se rechazan sin leer el archivo, los temporales de envíos programados se borran siempre, el botón de pánico corta también las conexiones abiertas y la conversión de audio y vídeo solo abre ficheros locales. Se aplica cuando la autorizas y conserva una copia previa; si necesitas volver también los datos, las escrituras posteriores a esa copia se pierden."
+      ],
+      "seguridad": true,
+      "accionesManuales": [],
+      "requisitos": [
+        "Espacio libre suficiente para la copia previa y la base nueva durante la actualización."
+      ],
+      "rompeCompatibilidad": false,
+      "nivel": "normal"
+    }
+  ]
+}
