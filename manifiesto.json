@@ -674,6 +674,36 @@
       ],
       "rompeCompatibilidad": false,
       "nivel": "normal"
+    },
+    {
+      "version": "0.12.24-beta",
+      "publicadaEl": "2026-11-26T07:47:14.000Z",
+      "imagenes": {
+        "api": "sha256:044c7c3f89a1c9e1c2e947b3fa62e794b6269d343b52830983e0e7a0beb4a40f",
+        "web": "sha256:2f00cc446be4a873ebe2e122da43644c940892f490f323b9de41965678c10636",
+        "pantallas": "sha256:d0dd79c634e44a9463fe23f8e814b7097cb065a253cdb211c03b2cfd8f528cfe",
+        "freeswitch": "sha256:9193e9061425a082e2362f25ba77a6b8e2c4650850e8ddd23897e7a76944d6b3",
+        "analytics": "sha256:735933dc57d00b1b9b836b8f699879332ba6b4736e63c854d9057a221e6e13e0",
+        "pasarelaLlamadas": "sha256:987170f0505a7fb4bca64dbe63a35e25755a50861924006303f32f9323aed634"
+      },
+      "paraQuienUsa": [
+        "Telefonía pasa a llamarse Actividad: en una sola página, con las pestañas Ahora, Historial y Grabaciones, se ven las llamadas del teléfono y de WhatsApp, las perdidas por devolver y las transferencias del día. El historial suma totales, trae más filtros y, con permiso, se descarga en CSV. El aviso «Volver a llamar» se cierra solo.",
+        "En WhatsApp, cada número llama y recibe llamadas, hasta tres a la vez, y la tarjeta de la llamada muestra la foto y el nombre del cliente. Si un número queda bloqueado, otro puede relevarlo sin empezar de cero, y un cliente al que se escribe desde dos números se ve en una sola conversación. En Preferencias › Avisos eliges qué avisos de WhatsApp te llegan. Además: varios temporizadores con nombre en Agenda, PDF protegidos que se abren con su contraseña, copiar una foto del chat copia solo la imagen y el correo tiene editor visual.",
+        "Pantallas se maneja como un estudio de televisión: eliges las TV, preparas la escena en la Previa y la pasas al aire con un fundido. La lista de vídeos y canciones (búsqueda de YouTube, listas enteras y Biblioteca) sigue sola aunque cierres la mesa y, al acabarse, se queda en el tablero o sigue con canciones parecidas. El tablero puede salir encima cada pocos minutos, una venta baja la música, celebra y vuelve, los anuncios salen encima en cinta o a pantalla completa con un aviso suave, y una TV que se apaga y se enciende retoma lo que sonaba."
+      ],
+      "paraQuienAdministra": [
+        "Las TV se crean, vinculan y administran en Ajustes › Sistema › Pantallas, en tarjetas con su estado; avisa si una TV lleva un rato apagada y deja elegir cuánto dura la celebración de una venta (8 segundos de fábrica) y si el mando de cada TV puede pausar el vídeo (bloqueado de fábrica). Lo que una TV muestra pasa a ser una escena que varias TV pueden compartir; cada TV conserva lo que ya mostraba. Las TV se recargan solas al actualizar.",
+        "En Gestión, «Repartir» reparte entre asesores y mesas los clientes filtrados o seleccionados, con vista previa, y necesita un permiso propio. En Ajustes › Telefonía se elige cuánto dura el aviso «Volver a llamar» y, por línea, si recibe llamadas (apagado de fábrica). Ajustes › WhatsApp › Llamadas muestra cada número con su sesión de mensajes y hasta tres de llamadas. El aviso legal del dominio puede añadirse a todos los correos (apagado de fábrica).",
+        "Susurrar lo decide solo el permiso de cada rol: donde el interruptor estaba apagado, el permiso se retira al actualizar. Arreglos de seguridad: asignar en bloque y pedir al banco en bloque respetan el alcance de cada mesa, la visibilidad de los campos solo la cambia quien tiene su permiso y transferir una llamada exige el suyo. Esta versión reorganiza los datos de Pantallas: se aplica cuando la autorizas y conserva una copia previa; volver atrás devuelve también los datos, y lo escrito después de esa copia se pierde."
+      ],
+      "seguridad": true,
+      "accionesManuales": [],
+      "requisitos": [
+        "Espacio libre suficiente para la copia previa y la base nueva durante la actualización."
+      ],
+      "rompeCompatibilidad": false,
+      "vueltaAtrasSoloCodigo": false,
+      "nivel": "normal"
     }
   ]
 }
